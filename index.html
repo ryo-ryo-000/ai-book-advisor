@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Book Advisor - AIがあなたに最適な本を提案</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (for Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa-solid fa-robot"></i>
+                <h1>AI Book Advisor</h1>
+            </div>
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="書名・著者名・キーワードで探す">
+            </div>
+            <div class="user-menu">
+                <button class="icon-btn" aria-label="お気に入り"><i class="fa-solid fa-heart"></i></button>
+                <button class="icon-btn" aria-label="アカウント"><i class="fa-solid fa-user"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>AIがあなたを分析し、<br>最適な一冊をご提案。</h2>
+                <p>読書体験を革新する、パーソナライズされた本との出会い。</p>
+            </div>
+        </section>
+
+        <section class="ai-analysis-process">
+            <div class="container">
+                <h3>AIによる3ステップ分析</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">01</div>
+                        <i class="fa-solid fa-user-check"></i>
+                        <h4>あなたを理解</h4>
+                        <p>興味のあるジャンル、読書の目的、現在のスキルレベルを分析</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">02</div>
+                        <i class="fa-solid fa-brain"></i>
+                        <h4>AIが最適化</h4>
+                        <p>膨大な書籍データベースから、あなたに最適な本を選定</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">03</div>
+                        <i class="fa-solid fa-book-sparkles"></i>
+                        <h4>パーソナライズ提案</h4>
+                        <p>なぜその本があなたに合うのか、明確な理由と共に提案</p>
+                    </div>
+                </div>
+                <button class="start-analysis-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI分析を開始する
+                </button>
+            </div>
+        </section>
+
+        <section class="filters">
+            <div class="container">
+                <nav class="date-filter">
+                    <button class="active">AIのおすすめ</button>
+                    <button>話題の新刊</button>
+                    <button>ベストセラー</button>
+                </nav>
+                <div class="category-filter">
+                    <button>ビジネス・経済</button>
+                    <button>テクノロジー</button>
+                    <button>自己啓発</button>
+                    <button>サイエンス</button>
+                    <button>マーケティング</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="new-releases">
+            <div class="container">
+                <div class="section-header">
+                    <h3>AIが選ぶ、あなたへのおすすめ</h3>
+                    <div class="view-switcher">
+                        <button id="grid-view-btn" class="icon-btn active" aria-label="グリッド表示"><i class="fa-solid fa-grip"></i></button>
+                        <button id="list-view-btn" class="icon-btn" aria-label="リスト表示"><i class="fa-solid fa-list"></i></button>
+                    </div>
+                </div>
+
+                <div id="book-container" class="book-grid">
+                    <!-- Book Card 1 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <img src="book-cover.webp" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <h4 class="book-title">実践DXの教科書</h4>
+                            <p class="book-author">田中 太郎</p>
+                            <span class="book-category">テクノロジー</span>
+                            <div class="ai-reason">AIがあなたにおすすめする理由：<br>「最新のDXトレンドを学べる実践的な一冊」</div>
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="amazon-btn">
+                                <i class="fa-brands fa-amazon"></i> Amazonで購入
+                            </a>
+                        </div>
+                        <button class="favorite-btn" aria-label="お気に入りに追加"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <!-- Book Card 2 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <img src="book-cover.webp" alt="Book Cover">
+                        </div>
+                        <div class="book-info">
+                            <h4 class="book-title">未来予測2025</h4>
+                            <p class="book-author">鈴木 次郎</p>
+                            <span class="book-category">ビジネス・経済</span>
+                            <div class="ai-reason">AIがあなたにおすすめする理由：<br>「ビジネス戦略を立てる上で必読の未来予測」</div>
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="amazon-btn">
+                                <i class="fa-brands fa-amazon"></i> Amazonで購入
+                            </a>
+                        </div>
+                        <button class="favorite-btn" aria-label="お気に入りに追加"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <!-- Add more book cards... -->
+                    <div class="book-card">
+                        <div class="book-cover"><img src="book-cover.webp" alt="Book Cover"></div>
+                        <div class="book-info">
+                            <h4 class="book-title">心を動かすリーダーシップ</h4>
+                            <p class="book-author">佐藤 花子</p>
+                            <span class="book-category">自己啓発</span>
+                            <div class="ai-reason">AIがあなたにおすすめする理由：<br>「チームを動かす力を身に付ける必読書」</div>
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="amazon-btn">
+                                <i class="fa-brands fa-amazon"></i> Amazonで購入
+                            </a>
+                        </div>
+                        <button class="favorite-btn" aria-label="お気に入りに追加"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"><img src="book-cover.webp" alt="Book Cover"></div>
+                        <div class="book-info">
+                            <h4 class="book-title">データサイエンス入門</h4>
+                            <p class="book-author">高橋 健太</p>
+                            <span class="book-category">サイエンス</span>
+                            <div class="ai-reason">AIがあなたにおすすめする理由：<br>「データ分析の基礎から学べる入門書」</div>
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="amazon-btn">
+                                <i class="fa-brands fa-amazon"></i> Amazonで購入
+                            </a>
+                        </div>
+                        <button class="favorite-btn" aria-label="お気に入りに追加"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"><img src="book-cover.webp" alt="Book Cover"></div>
+                        <div class="book-info">
+                            <h4 class="book-title">Web3時代のマーケティング</h4>
+                            <p class="book-author">伊藤 優子</p>
+                            <span class="book-category">マーケティング</span>
+                            <div class="ai-reason">AIがあなたにおすすめする理由：<br>「最新テクノロジーを活用したマーケティング」</div>
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="amazon-btn">
+                                <i class="fa-brands fa-amazon"></i> Amazonで購入
+                            </a>
+                        </div>
+                        <button class="favorite-btn" aria-label="お気に入りに追加"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"><img src="book-cover.webp" alt="Book Cover"></div>
+                        <div class="book-info">
+                            <h4 class="book-title">アジャイル開発の実践</h4>
+                            <p class="book-author">渡辺 誠</p>
+                            <span class="book-category">テクノロジー</span>
+                            <div class="ai-reason">AIがあなたにおすすめする理由：<br>「効率的な開発手法をマスターできる一冊」</div>
+                            <a href="https://www.amazon.co.jp/" target="_blank" class="amazon-btn">
+                                <i class="fa-brands fa-amazon"></i> Amazonで購入
+                            </a>
+                        </div>
+                        <button class="favorite-btn" aria-label="お気に入りに追加"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="insight-topics">
+            <div class="container">
+                <div class="section-header">
+                    <h3>AIが分析する、今読むべきトピック</h3>
+                </div>
+                <div class="topics-grid">
+                    <a href="#" class="topic-card">
+                        <img src="https://via.placeholder.com/600x400.png/3182CE/FFFFFF?text=Topic+1" alt="Topic 1">
+                        <div class="topic-overlay">
+                            <h4>【AI分析】あなたのキャリアを加速させる必読書 Best 5</h4>
+                        </div>
+                    </a>
+                    <a href="#" class="topic-card">
+                        <img src="https://via.placeholder.com/600x400.png/2D3748/FFFFFF?text=Topic+2" alt="Topic 2">
+                        <div class="topic-overlay">
+                            <h4>【AIが選ぶ】ビジネスリーダーが今読んでいる本 10選</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 AI Book Advisor. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- AI Analysis Modal -->
+    <div id="analysis-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>AIがあなたを分析します</h3>
+            <p class="modal-subtitle">以下の質問に答えて、あなたに最適な本を見つけましょう</p>
+            
+            <form id="analysis-form">
+                <div class="form-step active" data-step="1">
+                    <h4>1. 興味のあるジャンルを選んでください（複数選択可）</h4>
+                    <div class="genre-grid">
+                        <label class="genre-option">
+                            <input type="checkbox" name="genre" value="business">
+                            <span>ビジネス・経済</span>
+                        </label>
+                        <label class="genre-option">
+                            <input type="checkbox" name="genre" value="tech">
+                            <span>テクノロジー</span>
+                        </label>
+                        <label class="genre-option">
+                            <input type="checkbox" name="genre" value="self-help">
+                            <span>自己啓発</span>
+                        </label>
+                        <label class="genre-option">
+                            <input type="checkbox" name="genre" value="science">
+                            <span>サイエンス</span>
+                        </label>
+                        <label class="genre-option">
+                            <input type="checkbox" name="genre" value="marketing">
+                            <span>マーケティング</span>
+                        </label>
+                        <label class="genre-option">
+                            <input type="checkbox" name="genre" value="leadership">
+                            <span>リーダーシップ</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-step" data-step="2">
+                    <h4>2. 読書の主な目的は？</h4>
+                    <div class="purpose-options">
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="skill-up">
+                            <span>スキルアップ・キャリア向上</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="knowledge">
+                            <span>知識を深める・教養を高める</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="problem-solving">
+                            <span>具体的な問題を解決したい</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="inspiration">
+                            <span>インスピレーションを得たい</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-step" data-step="3">
+                    <h4>3. あなたの現在の立場は？</h4>
+                    <div class="position-options">
+                        <label class="radio-option">
+                            <input type="radio" name="position" value="student">
+                            <span>学生</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="position" value="new-grad">
+                            <span>新入社員・若手社員</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="position" value="mid-career">
+                            <span>中堅社員・専門職</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="position" value="manager">
+                            <span>管理職・マネージャー</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="position" value="executive">
+                            <span>経営者・役員</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="position" value="freelance">
+                            <span>フリーランス・起業家</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn" style="display: none;">
+                        <i class="fa-solid fa-arrow-left"></i> 前へ
+                    </button>
+                    <button type="button" class="next-btn">
+                        次へ <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="analyze-btn" style="display: none;">
+                        <i class="fa-solid fa-sparkles"></i> 分析を開始
+                    </button>
+                </div>
+            </form>
+            
+            <div class="analyzing-screen" style="display: none;">
+                <div class="analyzing-animation">
+                    <i class="fa-solid fa-brain fa-pulse"></i>
+                </div>
+                <h4>AIが分析中...</h4>
+                <p>あなたに最適な本を選定しています</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
