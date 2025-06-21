@@ -363,55 +363,267 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ローカルで推薦を生成する関数
     function generateLocalRecommendations(preferences) {
-        // サンプル書籍データ
+        // 実際の書籍データ（2024年ベストセラー）
         const books = [
             {
                 id: 1,
-                title: '実践DXの教科書',
-                author: '田中 太郎',
+                title: 'AI 2041 人工知能が変える20年後の未来',
+                author: 'カイフー・リー、チェン・チウファン',
                 category: 'テクノロジー',
-                amazon_url: 'https://www.amazon.co.jp/',
-                topics: ['skill-up', 'tech', 'business']
+                amazon_url: 'https://www.amazon.co.jp/dp/4163914854',
+                topics: ['knowledge', 'tech', 'business']
             },
             {
                 id: 2,
-                title: '未来予測2025',
-                author: '鈴木 次郎',
+                title: 'ジェイソン流お金の増やし方',
+                author: '厚切りジェイソン',
                 category: 'ビジネス・経済',
-                amazon_url: 'https://www.amazon.co.jp/',
-                topics: ['knowledge', 'business', 'executive']
+                amazon_url: 'https://www.amazon.co.jp/dp/4835646355',
+                topics: ['skill-up', 'business', 'freelance']
             },
             {
                 id: 3,
-                title: '心を動かすリーダーシップ',
-                author: '佐藤 花子',
+                title: '人は話し方が9割',
+                author: '永松茂久',
                 category: '自己啓発',
-                amazon_url: 'https://www.amazon.co.jp/',
-                topics: ['inspiration', 'manager', 'leadership']
+                amazon_url: 'https://www.amazon.co.jp/dp/4799108425',
+                topics: ['skill-up', 'inspiration', 'manager']
             },
             {
                 id: 4,
-                title: 'データサイエンス入門',
-                author: '高橋 健太',
-                category: 'サイエンス',
-                amazon_url: 'https://www.amazon.co.jp/',
-                topics: ['skill-up', 'science', 'student']
+                title: 'ChatGPT最強の仕事術',
+                author: '池田朋弘',
+                category: 'テクノロジー',
+                amazon_url: 'https://www.amazon.co.jp/dp/4866801956',
+                topics: ['skill-up', 'tech', 'problem-solving']
             },
             {
                 id: 5,
-                title: 'Web3時代のマーケティング',
-                author: '伊藤 優子',
-                category: 'マーケティング',
-                amazon_url: 'https://www.amazon.co.jp/',
-                topics: ['skill-up', 'marketing', 'freelance']
+                title: 'スタンフォード式 最高の睡眠',
+                author: '西野精治',
+                category: 'サイエンス',
+                amazon_url: 'https://www.amazon.co.jp/dp/4763136011',
+                topics: ['knowledge', 'science', 'self-help']
             },
             {
                 id: 6,
-                title: 'アジャイル開発の実践',
-                author: '渡辺 誠',
+                title: 'メタバースとは何か',
+                author: '岡嶋裕史',
                 category: 'テクノロジー',
-                amazon_url: 'https://www.amazon.co.jp/',
-                topics: ['problem-solving', 'tech', 'mid-career']
+                amazon_url: 'https://www.amazon.co.jp/dp/4334045561',
+                topics: ['knowledge', 'tech', 'business']
+            },
+            {
+                id: 7,
+                title: '1分で話せ',
+                author: '伊藤羊一',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4797395230',
+                topics: ['skill-up', 'business', 'manager']
+            },
+            {
+                id: 8,
+                title: 'FACTFULNESS',
+                author: 'ハンス・ロスリング',
+                category: 'サイエンス',
+                amazon_url: 'https://www.amazon.co.jp/dp/4822289605',
+                topics: ['knowledge', 'science', 'problem-solving']
+            },
+            {
+                id: 9,
+                title: 'リーダーの仮面',
+                author: '安藤広大',
+                category: '自己啓発',
+                amazon_url: 'https://www.amazon.co.jp/dp/4478110514',
+                topics: ['leadership', 'manager', 'skill-up']
+            },
+            {
+                id: 10,
+                title: '世界一やさしい「やりたいこと」の見つけ方',
+                author: '八木仁平',
+                category: '自己啓発',
+                amazon_url: 'https://www.amazon.co.jp/dp/4046044357',
+                topics: ['inspiration', 'self-help', 'student']
+            },
+            {
+                id: 11,
+                title: 'HARD THINGS',
+                author: 'ベン・ホロウィッツ',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4822250857',
+                topics: ['leadership', 'manager', 'executive'],
+                description: '起業家が直面する困難な局面での意思決定法'
+            },
+            {
+                id: 12,
+                title: 'ゼロ秒思考',
+                author: '赤羽雄二',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/447802099X',
+                topics: ['skill-up', 'problem-solving', 'business'],
+                description: 'メモ書きで思考と感情を整理する技術'
+            },
+            {
+                id: 13,
+                title: 'イシューからはじめよ',
+                author: '安宅和人',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4862760856',
+                topics: ['problem-solving', 'business', 'manager'],
+                description: '生産性を劇的に高める問題設定の技術'
+            },
+            {
+                id: 14,
+                title: 'ビジョナリー・カンパニー',
+                author: 'ジム・コリンズ',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4822740315',
+                topics: ['leadership', 'executive', 'business'],
+                description: '時代を超える偉大な企業の条件'
+            },
+            {
+                id: 15,
+                title: '7つの習慣',
+                author: 'スティーブン・R・コヴィー',
+                category: '自己啓発',
+                amazon_url: 'https://www.amazon.co.jp/dp/4863940920',
+                topics: ['leadership', 'skill-up', 'manager'],
+                description: 'ビジネスと人生の成功原則'
+            },
+            {
+                id: 16,
+                title: 'HIGH OUTPUT MANAGEMENT',
+                author: 'アンドリュー・S・グローブ',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4822255018',
+                topics: ['manager', 'leadership', 'business'],
+                description: 'インテル元CEOが教える経営管理の極意'
+            },
+            {
+                id: 17,
+                title: 'エッセンシャル思考',
+                author: 'グレッグ・マキューン',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4761270438',
+                topics: ['skill-up', 'problem-solving', 'business'],
+                description: '最少の時間で成果を最大にする'
+            },
+            {
+                id: 18,
+                title: 'ティール組織',
+                author: 'フレデリック・ラルー',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4862762263',
+                topics: ['leadership', 'executive', 'manager'],
+                description: '次世代型組織の出現'
+            },
+            {
+                id: 19,
+                title: 'OKR（オーケーアール）',
+                author: 'クリスティーナ・ウォドキー',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4822255646',
+                topics: ['business', 'manager', 'skill-up'],
+                description: 'シリコンバレー式で戦略的に目標を達成する方法'
+            },
+            {
+                id: 20,
+                title: 'ストーリーとしての競争戦略',
+                author: '楠木建',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4492532706',
+                topics: ['business', 'executive', 'problem-solving'],
+                description: '優れた戦略の条件'
+            },
+            {
+                id: 21,
+                title: 'プロフェッショナルの条件',
+                author: 'P・F・ドラッカー',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4478300593',
+                topics: ['skill-up', 'business', 'manager'],
+                description: 'いかに成果をあげ、成長するか'
+            },
+            {
+                id: 22,
+                title: '人を動かす',
+                author: 'D・カーネギー',
+                category: '自己啓発',
+                amazon_url: 'https://www.amazon.co.jp/dp/442210098X',
+                topics: ['leadership', 'skill-up', 'manager'],
+                description: '人間関係の原則'
+            },
+            {
+                id: 23,
+                title: 'GIVE & TAKE',
+                author: 'アダム・グラント',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4837957463',
+                topics: ['business', 'leadership', 'skill-up'],
+                description: '「与える人」こそ成功する時代'
+            },
+            {
+                id: 24,
+                title: 'コンサル一年目が学ぶこと',
+                author: '大石哲之',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4799315323',
+                topics: ['skill-up', 'business', 'problem-solving'],
+                description: 'コンサルタントが最初に学ぶスキル'
+            },
+            {
+                id: 25,
+                title: 'メモの魔力',
+                author: '前田裕二',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4344034082',
+                topics: ['skill-up', 'problem-solving', 'business'],
+                description: 'アイデアを生み出し、夢を叶える思考術'
+            },
+            {
+                id: 26,
+                title: '論点思考',
+                author: '内田和成',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4492556559',
+                topics: ['problem-solving', 'business', 'manager'],
+                description: 'BCG流 問題設定の技術'
+            },
+            {
+                id: 27,
+                title: '影響力の武器',
+                author: 'ロバート・B・チャルディーニ',
+                category: 'マーケティング',
+                amazon_url: 'https://www.amazon.co.jp/dp/4414304229',
+                topics: ['marketing', 'business', 'skill-up'],
+                description: 'なぜ、人は動かされるのか'
+            },
+            {
+                id: 28,
+                title: 'ブルー・オーシャン戦略',
+                author: 'W・チャン・キム、レネ・モボルニュ',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4478068119',
+                topics: ['business', 'executive', 'problem-solving'],
+                description: '競争のない世界を創造する'
+            },
+            {
+                id: 29,
+                title: 'マネジメント[エッセンシャル版]',
+                author: 'P・F・ドラッカー',
+                category: 'ビジネス・経済',
+                amazon_url: 'https://www.amazon.co.jp/dp/4478410232',
+                topics: ['manager', 'leadership', 'business'],
+                description: 'マネジメントの基本と原則'
+            },
+            {
+                id: 30,
+                title: 'アイデアのつくり方',
+                author: 'ジェームス W.ヤング',
+                category: 'マーケティング',
+                amazon_url: 'https://www.amazon.co.jp/dp/4484881047',
+                topics: ['problem-solving', 'marketing', 'skill-up'],
+                description: '60年間売れ続ける創造性の教科書'
             }
         ];
         
